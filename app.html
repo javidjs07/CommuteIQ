@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CommuteIQ - Ride Details</title>
+  <link rel="stylesheet" href="./assets/css/app.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script defer src="./assets/js/app.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="index.html" class="nav-link">Home</a>
+    <h1>CommuteIQ</h1>
+    <button id="clearData" class="logout-button">Clear Ride Details</button>
+  </nav>
+
+  <main class="app-container">
+    <section class="app-content">
+      <h2>Ride Details</h2>
+      <p><strong>Source:</strong> <span id="app-source">--</span></p>
+      <p><strong>Destination:</strong> <span id="app-destination">--</span></p>
+      <p id="route-status"><strong>Selected Route:</strong> Not Selected</p>
+      <p><strong>Estimated Fare:</strong> <span id="app-fare">--</span></p>
+      <p><strong>Estimated Time:</strong> <span id="app-time">--</span></p>
+
+      <h2>Ride Options</h2>
+
+      <div class="ride-option">
+        <h3>Rapido</h3>
+        <p>Bike Fare: ₹<span id="rapido-bike-fare">--</span> | <strong>Time:</strong> <span id="rapido-bike-time">--</span></p>
+        <p>Auto Fare: ₹<span id="rapido-auto-fare">--</span> | <strong>Time:</strong> <span id="rapido-auto-time">--</span></p>
+        <p>Cab Fare: ₹<span id="rapido-cab-fare">--</span> | <strong>Time:</strong> <span id="rapido-cab-time">--</span></p>
+        <button onclick="openRapido()">Book on Rapido</button>
+      </div>
+
+      <div class="ride-option">
+        <h3>Ola</h3>
+        <p>Bike Fare: ₹<span id="ola-bike-fare">--</span> | <strong>Time:</strong> <span id="ola-bike-time">--</span></p>
+        <p>Auto Fare: ₹<span id="ola-auto-fare">--</span> | <strong>Time:</strong> <span id="ola-auto-time">--</span></p>
+        <p>Cab Fare: ₹<span id="ola-cab-fare">--</span> | <strong>Time:</strong> <span id="ola-cab-time">--</span></p>
+        <button onclick="openOla()">Book on Ola</button>
+      </div>
+
+      <div class="ride-option">
+        <h3>Uber</h3>
+        <p>Bike Fare: ₹<span id="uber-bike-fare">--</span> | <strong>Time:</strong> <span id="uber-bike-time">--</span></p>
+        <p>Auto Fare: ₹<span id="uber-auto-fare">--</span> | <strong>Time:</strong> <span id="uber-auto-time">--</span></p>
+        <p>Cab Fare: ₹<span id="uber-cab-fare">--</span> | <strong>Time:</strong> <span id="uber-cab-time">--</span></p>
+        <button onclick="openUber()">Book on Uber</button>
+      </div>
+
+      <h2>Route Map</h2>
+      <div id="map"></div>
+    </section>
+  </main>
+
+  <script>
+    function openRapido() {
+      window.open("https://www.rapido.bike/", "_blank");
+    }
+    function openOla() {
+      window.open("https://www.olacabs.com/", "_blank");
+    }
+    function openUber() {
+      window.open("https://m.uber.com/", "_blank");
+    }
+  </script>
+</body>
+</html>

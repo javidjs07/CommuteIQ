@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CommuteIQ - Dashboard</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+  <style>
+    /* Background Image Setup */
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('./assets/images/bg.jpg'); /* path correct cheyyi */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Glass Effect for Sections */
+    .about-content, .ride-details-container, .recent-rides {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      width: 90%;
+      max-width: 600px;
+      color: #fff;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Map box style for better look */
+    #map {
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    /* Navbar simple glass effect */
+    .navbar {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link, .connect-button, .logout-button {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 8px 16px;
+      margin: 5px;
+      border-radius: 12px;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .nav-link.active {
+      background: rgba(255, 255, 255, 0.3);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <button class="nav-link active" data-page="about">About</button>
+    <button class="nav-link" data-page="ride-details">Ride Details</button>
+    <a href="app.html" class="connect-button">CONNECT</a>
+    <button id="logoutButton" class="logout-button">Logout</button> 
+  </nav>
+  
+  <main>
+    <!-- ✅ About Page (Set Active by Default) -->
+    <section class="page about-page active" data-page="about">
+      <div class="about-content">
+        <h1 class="name" id="user-name">User Name</h1>
+        <p class="title">Phone: <span id="user-phone">Not Provided</span></p>
+        <h2>About CommuteIQ</h2>
+        <p><strong>CommuteIQ: One App, Every Ride</strong> - A seamless platform for ride-sharing, fare comparison, and real-time navigation. Experience the future of commuting with AI-driven insights and optimized routes.</p>
+        <a href="ride-details.html" class="ride-link">Go to Ride Details</a>
+      </div>
+    </section>
+    
+    <!-- ✅ Ride Details Page with Auto-Fill Search -->
+    <section class="page ride-details-page" data-page="ride-details">
+      <div class="ride-details-container">
+        <h2>Ride Details</h2>
+
+        <label for="source">Source:</label>
+        <input type="text" id="source" placeholder="Enter source location">
+        <ul id="source-suggestions" class="suggestions"></ul>
+        
+        <label for="destination">Destination:</label>
+        <input type="text" id="destination" placeholder="Enter destination location">
+        <ul id="destination-suggestions" class="suggestions"></ul>
+        
+        <button id="calculateRoute">Calculate Route</button>
+        
+        <p><strong>GO TO THE CONNECT PAGE</strong> <span id="route-info"></span></p>
+        <p><strong>ENJOY</strong> <span id="fare-info"></span></p>
+        <p><strong>YOUR RIDE</strong> <span id="time-info"></span></p>
+      </div>
+
+      <div id="map" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+    </section>
+
+    <!-- ✅ Recent Rides Section -->
+    <section class="recent-rides">
+      <h2>Recent Rides</h2>
+      <ul id="recent-rides-list"></ul>
+    </section>
+  </main>
+
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>

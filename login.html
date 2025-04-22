@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - CommuteIQ</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body class="login-page">
+  <main class="login-container">
+    <section class="login-form">
+      <h2>Login</h2>
+      <form id="loginForm">
+        <input type="text" id="userName" placeholder="Enter Your Name" required>
+        <input type="tel" id="userPhone" placeholder="Enter Your Phone Number" pattern="[6-9]{1}[0-9]{9}" title="Enter a valid 10-digit Indian phone number" required>
+        <input type="password" id="userPassword" placeholder="Enter Password" required>
+        <button type="submit">Login</button>
+      </form>
+    </section>
+  </main>
+  <script src="./assets/js/script.js"></script>
+</body>
+</html>
